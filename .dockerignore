@@ -1,0 +1,4 @@
+public/vendor
+.git
+node_modules
+Dockerfile
