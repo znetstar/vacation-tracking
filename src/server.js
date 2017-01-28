@@ -17,7 +17,7 @@ for (let route of ['/summary', '/add-vacation']) {
 		res.send(fs.readFileSync(`${__dirname}/../public/index.html`, 'utf8'));
 	});
 }
-
+	
 // Create the http server
 const http_server = new Server(app);
 

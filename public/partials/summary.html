@@ -1,0 +1,19 @@
+<div flex-xs flex-gt-xs="50" layout-xs="column" layout="row">
+	<md-card class="vacation" ng-repeat="vacation in vacations | orderBy: '-startDate'">
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">{{ vacation.country }}</span>
+				<span class="md-subhead">
+					<p>{{ vacation.dateString }}</p>
+					<p>{{ vacation.description }}</p>
+				</span>
+			</md-card-title-text>
+			<md-card-title-media>
+				<img ng-src="https://flag-api.projects.zacharyboyd.nyc/{{vacation.country}}" alt="Washed Out">
+			</md-card-title-media>
+		</md-card-title>
+		<md-card-actions layout="row" layout-align="end center">
+		   <md-button ng-click="remove($index)">Remove</md-button>
+		</md-card-actions>
+	</md-card>
+</div>
