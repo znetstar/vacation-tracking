@@ -84,10 +84,12 @@ app
 				super();
 			}
 
+
+
 			summarize() {
 				let summary = [];
 
-				for (let vacation of this.valueOf()) {
+				for (let vacation of this.sortedByDate()) {
 					var numberOfDays = vacation.numberOfDays;
 					let find_existing = (s) => { 
 						return vacation.countries.some((c) => s.country === c);
@@ -110,7 +112,7 @@ app
 				return summary.sort((a,b) => b.numberOfDays - a.numberOfDays);
 			}
 
-			valueOf() {
+			sortedByDate() {
 				return this.sort((a,b) => b.startDate - a.startDate);
 			}
 		};
