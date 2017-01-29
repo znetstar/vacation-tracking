@@ -32,13 +32,31 @@ app
 			constructor(descripion, startDate, endDate) {
 				this.description = descripion;
 				this._startDate = new Date(startDate);
-				this._endDate = new Date(endDate);
+				this._startDate.setHours(0,0,0,0);
+				this._endDate = (endDate && new Date(endDate)) || null;
 				this._countries = [];
 			}
 
-			get startDate() { this._startDate.setHours(0,0,0,0); return this._startDate; }
+			get stillPresent() {
+				return this._endDate === null;
+			}
 
-			get endDate() {  this._endDate.setHours(0,0,0,0); return this._endDate; }
+			get startDate() { 
+				return this._startDate; 
+			}
+
+			get endDate() {  
+				if (this._endDate instanceof Date)
+					this._endDate.setHours(0,0,0,0); 
+
+				if (this._endDate === null) {
+					let d = new Date();
+					d.setHours(0,0,0,0);
+					return d;
+				}
+
+				return this._endDate; 
+			}
 
 			addCountry(name) {
 				(this._countries.indexOf(name) === -1) && this._countries.push(name);
@@ -80,7 +98,7 @@ app
 							lastVisited.toString = () => moment(lastVisited).format('M/YYYY');
 							summary.push({
 								country: country,
-								lastVisited: lastVisited.toString(),
+								lastVisited: vacation.stillPresent ? 'Still Present' : lastVisited.toString(),
 								numberOfDays
 							});
 						}
@@ -137,7 +155,7 @@ app
 		};
 
 		$scope.submitForm = () => {
-			if (!$scope.vacation.startDate || !$scope.vacation.endDate || !$scope.countries.length)
+			if (!$scope.vacation.startDate || !$scope.countries.length)
 				return;
 
 			let vacation = new Vacation($scope.vacation.description, $scope.vacation.startDate, $scope.vacation.endDate);

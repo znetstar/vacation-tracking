@@ -21,13 +21,13 @@
         </div>
         <div layout-gt-xs="row">
           <md-input-container class="md-block" flex-gt-xs>
-            <label>Start Date</label>
+            <label>Arrived on</label>
             <md-datepicker ng-model="vacation.startDate" md-max-date="vacation.endDate" required></md-datepicker>
           </md-input-container>
 
           <md-input-container flex-gt-xs>
-            <label>End Date</label>
-            <md-datepicker ng-model="vacation.endDate" md-min-date="vacation.startDate" required></md-datepicker>
+            <label>Left on</label>
+            <md-datepicker ng-model="vacation.endDate" md-min-date="vacation.startDate"></md-datepicker>
           </md-input-container>
         </div>
         <div>
