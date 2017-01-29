@@ -109,7 +109,7 @@ app
 		$scope.countries = [];
 		$scope.vacation = { }
 		$scope.user = User;
-		$scope.first_submit = Boolean(sessionStorage.first_submit);
+		$scope.first_submit = Boolean(window.first_submit);
 
 		$scope.querySearch = (text) => {
 			return Countries.filter((c) => !$scope.countries.some((cc) => cc.display === c.display)).filter((c) => c.value.match(text.toLowerCase()));
@@ -150,8 +150,7 @@ app
 			Vacations.push(vacation);
 
 			$scope.vacation = {};
-			$scope.first_submit = 1; 
-			sessionStorage.first_submit = 1;
+			$scope.first_submit = window.first_submit = 1;
 			$location.path('/');
 		};
 	})
