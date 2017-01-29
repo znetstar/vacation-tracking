@@ -1,6 +1,23 @@
-/*@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-*/
-.vacation .md-card-image {
-	width: 250px;
+
+.vacation img {
+	background: rgba(0,0,0,.10);
+	padding: 5px;
+	border-radius: 25;
+}
+
+
+.country img {
+    float: left;
+    margin-top: 0.15em;
+    height: .85em;
+    width: 2em;
+}
+
+md-list-item.country-item img {
+	border-radius: 0;
+    height: 30px;
+    position: relative;
+    top: 8px;
 }

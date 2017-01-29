@@ -1,19 +1,31 @@
-<div flex-xs flex-gt-xs="50" layout-xs="column" layout="row">
-	<md-card class="vacation" ng-repeat="vacation in vacations | orderBy: '-startDate'">
-		<md-card-title>
-			<md-card-title-text>
-				<span class="md-headline">{{ vacation.country }}</span>
-				<span class="md-subhead">
-					<p>{{ vacation.dateString }}</p>
-					<p>{{ vacation.description }}</p>
-				</span>
-			</md-card-title-text>
-			<md-card-title-media>
-				<img ng-src="https://flag-api.projects.zacharyboyd.nyc/{{vacation.country}}" alt="Washed Out">
-			</md-card-title-media>
-		</md-card-title>
-		<md-card-actions layout="row" layout-align="end center">
-		   <md-button ng-click="remove($index)">Remove</md-button>
-		</md-card-actions>
-	</md-card>
+<div ng-controller="Summary">
+  <div ng-if="vacations.length">
+    <h3>Vacation Summary<span> for {{user.first_name}} {{user.last_name}}</span></h3>
+    <md-card>
+      <md-table-container>
+        <table md-table md-row-select multiple>
+          <thead md-head md-order="numberOfDays">
+            <tr md-row>
+              <th md-column><span>Country</span></th>
+              <th md-column><span>Last Visit</span></th>
+              <th md-column md-numeric><span>Number of Days</span></th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="vacation" md-select-id="numberOfDays" md-auto-select ng-repeat="vacation in vacations">
+              <td md-cell><country name="vacation.country"></country></td>
+              <td md-cell>{{vacation.lastVisited}}</td>
+              <td md-cell>{{vacation.numberOfDays}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+    </md-card>
+  </div>
+  <div ng-if="!vacations.length">
+    <h3>Welcome to Vacation Tracking!</h3>
+    <p>
+      Click the add button in the top right corner to <a href="/add-vacation">add a new vacation</a>
+    </p>
+  </div>
 </div>

@@ -6,28 +6,34 @@
     <base href="/">
     <title></title>
     <link rel="stylesheet" type="text/css" href="vendor/angular-material/angular-material.min.css" />
+    <link href="vendor/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body> 
-    <header>
-      <md-toolbar class="md-hue-2">
+    <header ng-controller="Toolbar">
+      <md-toolbar md-scroll-shrink class="md-hue-2">
         <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-          <md-icon>menu</md-icon>
+        <md-button ng-click="go_home()" class="md-icon-button" ng-disabled="false">
+          <md-icon>home</md-icon>
         </md-button>
         <h2>
           <span>Vacation Tracking</span>
         </h2>
+        <span flex></span>
+        <md-button ng-if="current_path != '/add-vacation'" ng-click="add_click()" class="md-fab md-mini" aria-label="Favorite">
+          <md-icon>add</md-icon>
+        </md-button>
       </md-toolbar>
     </header>
-    <md-content class="md-padding" layout-xs="column" layout="row" ng-view></md-content>
+    <md-content class="md-padding" layout-xs="column" ng-view></md-content>
     <script src="vendor/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script src="vendor/moment/min/moment.min.js" type="text/javascript"></script>
-    <script src="vendor/angular/angular.min.js" type="text/javascript"></script>
+    <script src="vendor/angular/angular.js" type="text/javascript"></script>
     <script src="vendor/angular-route/angular-route.min.js" type="text/javascript"></script>
     <script src="vendor/angular-messages/angular-messages.min.js" type="text/javascript"></script>
     <script src="vendor/angular-aria/angular-aria.min.js" type="text/javascript"></script>
     <script src="vendor/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    <script src="vendor/angular-material-data-table/dist/md-data-table.min.js" type="text/javascript"></script>
     <script src="vendor/angular-material/angular-material.min.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
   </body>
