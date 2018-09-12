@@ -2,7 +2,7 @@
   "name": "vacation-tracking",
   "version": "1.0.0",
   "main": "src/server.js",
-  "license": "MIT",
+  "license": "Unlicense",
   "scripts": {
     "start": "node src/server.js",
     "test": "mocha test/test.js",
